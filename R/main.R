@@ -1,7 +1,9 @@
+set.seed(12345)
+
 fileIndex <- 1
 D <- 100
 dmax <- 3 # 50
-kmax <- 2 # 30
+kmax <- 3 # 30
 
 ############################### REQURIES ###########################
 source("ModelSelect.R")
@@ -92,10 +94,11 @@ khat_MCG <- dkPairs$khat
 dhat <- c(dhat_ZG1, dhat_ZG2, dhat_ZG3, dhat_MCG)
 Khat <- c(khat_ZG1, khat_ZG2, khat_ZG3, dhat_MCG)
 df.dk <- data.frame(
-	dhat, Khat, type=c("ZG1","ZG2","ZG3","MCG")
+	type=c("ZG1","ZG2","ZG3","MCG"),
+	dhat, 
+	Khat
 )
-df.dk
-
+print(df.dk)
 
 # evaluate the ARI by 4 types of groud truths
 ari_MCG_tissue <- adjustedRandIndex(vertex_attr(g2, name = "tissue"),
@@ -145,14 +148,16 @@ region <- c(ari_ZG1_region,ari_ZG2_region, ari_ZG3_region, ari_MCEG_region, ari_
 Y <- c(ari_ZG1_Y,ari_ZG2_Y, ari_ZG3_Y, ari_MCEG_Y, ari_MCG_Y)
 
 df.ari <- data.frame(
+	type=c("ZG1","ZG2","ZG3","MCEG","MCG"),
 	tissue=tissue,
 	hemisphere=hemisphere,
 	region=region,
-	Y=Y,
-	type=c("ZG1","ZG2","ZG3","MCEG","MCG")
+	Y=Y
 )
-df.ari
-df.ari %>% melt %>%
+print(format(df.ari,digits=2))
+
+p <- df.ari %>% melt %>%
 	ggplot(aes(x=variable, y=value, fill=type, color=type)) +
 	geom_col(position = position_dodge(), alpha=0.5) +
 	labs(x="label",y="ari")
+print(p)
