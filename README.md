@@ -1,8 +1,6 @@
 # Simultaneous Dimensionality and Complexity Model Selection for Spectral Graph Clustering
 
-```
 Congyuan Yang, Carey E. Priebe, Youngser Park, David J. Marchette
-```
 
 https://arxiv.org/abs/1904.02926
 
