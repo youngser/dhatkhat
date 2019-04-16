@@ -25,7 +25,7 @@ On top of the `main.R` file, there are 4 global parameters:
 * `dmax` indicates the boundary of the scanning of `d`. So we will scan `d` from 1 to `dmax`. 
 * `kmax` indicates the boundary of the scanning of `K`. So we will scan `K` from 1 to `kmax`.
 
-The example in the paper (with `dmax=50` and `kmax=30`) may take ~30 hours to run. To speed up, we can set smaller `dmax` and `kmax`, e.g., `dmax=3` and `kmax=3`, which takes about < 15 minute in a decent laptop computer.
+The example in the paper (with `dmax=50` and `kmax=30`) may take ~30 hours to run. To speed up, we can set smaller `dmax` and `kmax`, e.g., `dmax=3` and `kmax=3`, which takes about < 15 minute in a decent laptop computer, and it yields the following plot.
 
 <img src="figure/plot_ari.png" alt="Barplot of the performance (ARI) of different model selection algorithms." width="1500" />
 <p class="caption">
