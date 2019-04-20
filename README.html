@@ -391,12 +391,12 @@ $(document).ready(function () {
 <ul>
 <li><p>To run the synthetic data simulation, please follow these steps:</p>
 <ol style="list-style-type: decimal">
-<li><p>(optional) Run <code>main_simulation.R</code> 600 times with different parameter pair <code>(i, mc)</code>, where <code>i</code> ranges from 1 to 6 and <code>mc</code> ranges from 1 to 100. <code>batch_simulation.sh</code> is a script for running these jobs in our cluster. Each run produces a <code>.RData</code> file as a partial result (600 files total). These <code>.RData</code> files are stored in Google Drive and loaded inside <code>loadData.R</code>.</p></li>
+<li><p>(optional) Run <code>main_simulation.R</code> 600 times with different parameter pair <code>(i, mc)</code>, where <code>i</code> ranges from 1 to 6 and <code>mc</code> ranges from 1 to 100. <code>batch_simulation.sh</code> is a script for running these jobs in our cluster. Each run produces a <code>.RData</code> file as a partial result (600 files total). The precomputed <code>.RData</code> files are stored in Google Drive and loaded inside <code>loadData.R</code>.</p></li>
 <li><p>Run <code>plot_simulation.R</code> to get Figure 5, 6, 7 in the paper. The results are shown in <a href="http://www.cis.jhu.edu/~parky/dhatKhat/plot_simulation.html">here</a></p></li>
 </ol></li>
 <li><p>To run the connectome data experiment, please follow these steps:</p>
 <ol style="list-style-type: decimal">
-<li><p>(optional) Run <code>main_DS01216.R</code> 114 times with different parameter <code>fileIndex</code>, which ranges from 1 to 114. <code>batch_realdata.sh</code> is a script for running these jobs in our cluster. Each run will produces a <code>.RData</code> file as a partial result (114 files total). These <code>.RData</code> files are also stored in Google Drive and loaded inside <code>loadData.R</code>.</p></li>
+<li><p>(optional) Run <code>main_DS01216.R</code> 114 times with different parameter <code>fileIndex</code>, which ranges from 1 to 114. <code>batch_realdata.sh</code> is a script for running these jobs in our cluster. Each run will produces a <code>.RData</code> file as a partial result (114 files total). The precomputed <code>.RData</code> files are also stored in Google Drive and loaded inside <code>loadData.R</code>.</p></li>
 <li><p>Run <code>plot_DS01216.R</code> to get Figure 8, 9 and the results of Table 1 in the paper. The results are shown in <a href="http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html">here</a>.</p></li>
 </ol></li>
 </ul>
