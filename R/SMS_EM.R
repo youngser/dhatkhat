@@ -774,6 +774,22 @@ bicGmmVVV <- function(X, k, tao = 0) {
     }
   }
   
+  # Check if there is singularity
+  for (j in 1 : k) {
+    if (kappa(Sigma[[j]]) > 1e10) {
+      print("Singular at initialization")
+      return (list(bic = 0,
+                   classification = init,
+                   d = d,
+                   k = k,
+                   iter = 0,
+                   logliks = NULL,
+                   tao = tao,
+                   mu = mu,
+                   Sigma = Sigma))
+    }
+  }
+  
   # initialization of f and t
   f <- matrix(rep(0, n * k), n, k)
   fTemp <- matrix(rep(0, n * k), n, k)
@@ -800,10 +816,16 @@ bicGmmVVV <- function(X, k, tao = 0) {
   while ((flag == 0) && (diff > 1e-5) && (iter < 100)) {
     # E step
     for (i in 1 : n) {
-      for (j in 1 : k) {
-        t[i,j] <- f[i,j] / sum(f[i,])
-        if (t[i,j] < 1e-10) {
-          t[i,j] <- 1e-10
+      if (sum(f[i,]) == 0) {
+        for (j in 1 : k) {
+          t[i,j] <- 1/k
+        }
+      } else {
+        for (j in 1 : k) {
+          t[i,j] <- f[i,j] / sum(f[i,])
+          if (t[i,j] < 1e-10) {
+            t[i,j] <- 1e-10
+          }
         }
       }
     }

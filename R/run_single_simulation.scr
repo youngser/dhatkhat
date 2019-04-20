@@ -1,0 +1,16 @@
+#!/bin/bash -l
+
+#SBATCH
+#SBATCH --job-name=MyJob
+#SBATCH --time=48:0:0
+# number of tasks ~ processes per node
+#SBATCH --ntasks-per-node=1
+# number of cpus (cores) per task (process)
+#SBATCH --cpus-per-task=1
+#SBATCH --mail-type=end
+
+ml R
+ml
+which Rscript
+echo $1 $2
+Rscript main_simulation.R $1 $2
