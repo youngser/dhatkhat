@@ -136,16 +136,17 @@ suppressMessages(library(latex2exp))
 set.seed(123)
 library(RColorBrewer)
 mycol <- rev(colorRampPalette(brewer.pal(9,"RdYlBu"))(11))
-p2 <- ggplot(df2, aes(x=dhat, y=Khat, fill=as.numeric(as.character(ari)))) +
-  geom_jitter(aes(shape=method, size=ari), width=0.5, height=0.5, alpha=1) + 
-  scale_fill_gradientn(colours=mycol) +
-  #       scale_fill_gradient2(low=mycol[1], mid=mycol[5], high=mycol[11],
-  # 					 midpoint=0.2,
-  # 					 breaks=c(0.01, 0.20, 0.4) ) +
-  scale_shape_manual(values=c(21:24)) +
-  scale_size(guide = 'none') +
-  labs(x=TeX('$\\hat{d}$'), y=TeX('$\\hat{K}$'), color = "ARI", fill="ARI")
+p2 <- ggplot(df2, aes(x=dhat, y=Khat)) +
+	geom_jitter(aes(shape=method, color=method, alpha=ari, size=ari), width=0.5,height=0.5) + 
+	#	facet_wrap(~method, nrow=2) +
+	#	geom_point(aes(size=ari, color=method))
+	#	scale_color_gradientn(colours=matlab.like(10)) +
+	scale_shape_manual(values=c(16, 17, 15, 18))+
+	#    scale_shape_manual(values=c(21:24)) +
+	#	scale_size(guide = 'none') +
+	labs(x=TeX('$\\hat{d}$'), y=TeX('$\\hat{K}$'))
 p2
+
 
 # plot Figure 9
 hist(ari_MCG_hemisphere - ari_ZG1_hemisphere, xlab = "ARI_MCG - ARI_BIC.ZG1", 
