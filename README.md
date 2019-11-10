@@ -16,12 +16,12 @@ All the experiments are written in `R`, and here is the instruction for getting 
 
 	1. (optional) Run `main_simulation.R` 600 times with different parameter pair `(i, mc)`, where `i` ranges from 1 to 6 and `mc` ranges from 1 to 100. `batch_simulation.sh` is a script for running these jobs in our cluster. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are stored in Google Drive and loaded inside `loadData.R`.
 
-	2. Run `simulation1.R` to get Figure 1, 2, 3, 5, 6, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html)
+	2. Run `simulation1.R` to get Figures 1, 2, 3, 5, 6, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html)
 
-	3. Run `simulation2.R` to get Figure 4, 7, 8 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation2.html)
+	3. Run `simulation2.R` to get Figures 4, 7, 8, 10, 11 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation2.html)
 
 * To run the connectome data experiment, please follow these steps:
 
 	1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are also stored in Google Drive and loaded inside `loadData.R`.
 
-	2. Run `plot_DS01216.R` to get Figure 8, 9 and the results of Table 1 in the paper.  The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html).
+	2. Run `plot_DS01216.R` to get Figures 12, 13 and the results of Table 1 in the paper.  The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html).
