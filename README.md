@@ -16,7 +16,9 @@ All the experiments are written in `R`, and here is the instruction for getting 
 
 	1. (optional) Run `main_simulation.R` 600 times with different parameter pair `(i, mc)`, where `i` ranges from 1 to 6 and `mc` ranges from 1 to 100. `batch_simulation.sh` is a script for running these jobs in our cluster. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are stored in Google Drive and loaded inside `loadData.R`.
 
-	2. Run `plot_simulation.R` to get Figure 5, 6, 7 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_simulation.html)
+	2. Run `simulation1.R` to get Figure 1, 2, 3, 5, 6, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html)
+
+	3. Run `simulation2.R` to get Figure 4, 7, 8 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation2.html)
 
 * To run the connectome data experiment, please follow these steps:
 
