@@ -19,11 +19,10 @@ if (!require(RCurl)) install.packages("RCurl")
 library(RCurl)
 
 script <- getURL("https://raw.githubusercontent.com/youngser/dhatkhat/master/R/demo.R", ssl.verifypeer = FALSE)
-
 eval(parse(text = script))
 ```
 
-and the result should be look like [this](http://www.cis.jhu.edu/~parky/dhatKhat/demo.html).  
+and the result should look like [this](http://www.cis.jhu.edu/~parky/dhatKhat/demo.html).  
 (This may take around 10 minutes on a typical laptop.)
 
 * To run the synthetic data simulation in the paper, please follow these steps:
