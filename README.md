@@ -22,7 +22,7 @@ library(RCurl)
 script <- getURL("https://raw.githubusercontent.com/youngser/dhatkhat/master/R/demo.R", ssl.verifypeer = FALSE)
 eval(parse(text = script))
 ```
-and the result should look like [this](http://www.cis.jhu.edu/~parky/dhatKhat/demo.html).  
+and the result (each plot on its own window) should look like [this](http://www.cis.jhu.edu/~parky/dhatKhat/demo.html).  
 (This may take around 10 minutes on a typical laptop.)
 
 This is exactly the same setting as Figures 8 and 10 in the paper except that the graph is smaller, e.g., $n = 100$ as opposed to $n = 500$ in the paper.
