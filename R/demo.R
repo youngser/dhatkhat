@@ -11,7 +11,9 @@ if (length(newPkg)) install.packages(newPkg, dependencies = TRUE)
 update.packages(newPkg, ask = FALSE)
 invisible(sapply(requiredPkg, require, character.only = TRUE))
 
-source(url("http://www.cis.jhu.edu/~parky/dhatKhat/R/utils.R"))
+util.file <- url("http://www.cis.jhu.edu/~parky/dhatKhat/R/utils.R")
+source(util.file)
+close(util.file)
 
 
 ## ----param-----------------------------------------------------------------------------------------------------------------
@@ -31,7 +33,6 @@ g <- sbm.game(n, pref.matrix = as.matrix(B),
              block.sizes = rho*n, directed = F, loops = F); summary(g)
 #image(as_adjacency_matrix(g), main="Adjacency Matrix")
 plotA(g)
-ggsave("adjmat.pdf", wdith=5, height=5)
 
 
 ## ----emb-------------------------------------------------------------------------------------------------------------------
@@ -39,7 +40,6 @@ ggsave("adjmat.pdf", wdith=5, height=5)
 dmax <- 8 # maximum embedding dimension
 ase <- embed.graph(A=g[,,sparse=F], dim=dmax, scaling = TRUE)
 elb <- getElbows(abs(ase$D), n=3, plot=TRUE); title("Scree plot with 3 suggested elbows")
-dev.print(pdf, "scree.pdf")
 
 
 ## ----mc--------------------------------------------------------------------------------------------------------------------
@@ -136,5 +136,4 @@ df.out %>% ggplot(aes(method, ARI, color=method, fill=method)) +
   theme(axis.text.y=element_text(size=15)) +
   theme(strip.text=element_text(size=rel(1.2))) +
   theme(legend.text = element_text(colour="black", size = 15, face = "plain"))
-ggsave("ari.pdf", width=5, height=5)
 
