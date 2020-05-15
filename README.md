@@ -15,6 +15,7 @@ All the experiments are written in `R`, and here is the instruction for getting 
 * To run a simple working live demo, please run these lines
 
 ```
+if (!require(RCurl)) install.packages("RCurl")
 library(RCurl)
 
 script <- getURL("https://raw.githubusercontent.com/youngser/dhatkhat/master/R/demo.R", ssl.verifypeer = FALSE)
