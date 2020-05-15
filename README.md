@@ -17,7 +17,7 @@ All the experiments are written in `R`, and here is the instruction for getting 
 ```
 library(RCurl)
 
-script <- getURL("https://raw.githubusercontent.com/opetchey/RREEBES/Beninca_development/Beninca_etal_2008_Nature/report/functions/indirect_method_functions.R", ssl.verifypeer = FALSE)
+script <- getURL("https://raw.githubusercontent.com/youngser/dhatkhat/master/R/demo.R", ssl.verifypeer = FALSE)
 
 eval(parse(text = script))
 ```

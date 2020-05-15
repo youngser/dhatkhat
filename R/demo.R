@@ -103,14 +103,15 @@ ari_Walktrap <- adjustedRandIndex(Y, result_Rw$membership)
 khat_Walktrap <- max(membership(result_Rw))
 
 ## IRM
-if (!file.exists("irm_out.RData")) {
+if (!file.exists("RData/irm_out.RData")) {
   system.time(result_IRM <- irm(g[,,sparse=FALSE], sweeps = 1000)) # ~10 min to run on a macbook
   ari_IRM <- max(sapply(1:nrow(result_IRM), function(x) adjustedRandIndex(Y, result_IRM[x,])))
   khat_IRM <- max(mode.irm(result_IRM))
 #ari_IRM <- khat_IRM <- NA
-  save(result_IRM, ari_IRM, khat_IRM, file="irm_out.RData")
+  dir.create("RData", showWarnings = FALSE)
+  save(result_IRM, ari_IRM, khat_IRM, file="RData/irm_out.RData")
 } else {
-  load("irm_out.RData")
+  load("RData/irm_out.RData")
 }
 
 
