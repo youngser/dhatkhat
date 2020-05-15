@@ -32,13 +32,14 @@ set.seed(42+49182)
 g <- sbm.game(n, pref.matrix = as.matrix(B),
              block.sizes = rho*n, directed = F, loops = F); summary(g)
 #image(as_adjacency_matrix(g), main="Adjacency Matrix")
-plotA(g)
+dev.new(); plotA(g)
 
 
 ## ----emb-------------------------------------------------------------------------------------------------------------------
 ## embed graph
 dmax <- 8 # maximum embedding dimension
 ase <- embed.graph(A=g[,,sparse=F], dim=dmax, scaling = TRUE)
+dev.new()
 elb <- getElbows(abs(ase$D), n=3, plot=TRUE); title("Scree plot with 3 suggested elbows")
 
 
@@ -127,7 +128,7 @@ df.out <- data.frame(method = factor(algs, levels=algs),
                               khat_Louvain, khat_Walktrap, khat_IRM))
 df.out
 
-df.out %>% ggplot(aes(method, ARI, color=method, fill=method)) +
+p <- df.out %>% ggplot(aes(method, ARI, color=method, fill=method)) +
   geom_col(alpha=0.5, show.legend = FALSE) +
   geom_text(aes(label=paste0("hat(K) == ", Khat)), parse=TRUE, vjust=-0.2, show.legend = FALSE) +
   theme(axis.title=element_text(size=15)) +
@@ -136,4 +137,6 @@ df.out %>% ggplot(aes(method, ARI, color=method, fill=method)) +
   theme(axis.text.y=element_text(size=15)) +
   theme(strip.text=element_text(size=rel(1.2))) +
   theme(legend.text = element_text(colour="black", size = 15, face = "plain"))
+grid::grid.newpage()
+print(p)
 
