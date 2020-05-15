@@ -6,8 +6,6 @@ library(mvtnorm)
 
 #source("emase.R")
 
-## Reduce the mixture model to only the d-dimensional
-## "informative" dimensions.
 reduceMix <- function(model)
 {
    d <- model$d
@@ -36,9 +34,6 @@ reduceMix <- function(model)
    model
 }
 
-# compute the mixture density -- should convert verything
-# to an mclust object and we wouldn't need this, but
-# haven't done this yet.
 componentDensities <- function(x,pis,means,vars)
 {
     a <- sapply(1:length(pis),function(i) {
@@ -83,20 +78,6 @@ mclust <- function(ntries=1,
    m
 }
 
-## Just the embedding part of the ASE, without the clustering.
-## Useful for testing things out and getting pictures without
-## doing the full clustering
-##
-## g -- graph
-## verbose -- logical for verbosity
-## adjust diag, normalize -- variations on the adjacency matrix:
-##   adjust diag puts degree/(n-1) on the diagonal
-##   normalize multiplies by D^{-1/2} on both sides.
-## scale.by.values -- whether to scale the embedded vectors by the
-##   eigen/singular vectors
-## vector -- only used for directed graphs: which of u, v or u|v to 
-##   extract from the singular value decomposition
-## max.d -- embedding dimension.
 ase <- function(g,verbose=FALSE,adjust.diag=FALSE,normalize=FALSE,scale.by.values=FALSE,
                 vector='u',max.d=12)
 {
@@ -139,34 +120,6 @@ ase <- function(g,verbose=FALSE,adjust.diag=FALSE,normalize=FALSE,scale.by.value
    z
 }
 
-## Main embedding/clustering function
-## g -- graph
-## z -- optional embedding
-##    Only one of g, z should be given. z is used for cases
-##    where an embedding has been precomputed and fixed, and
-##    only the clustering is to be performed. This is mostly for
-##    debugging purposes.
-## only.embed -- only run the ase() code and return the embedding.
-## min.d, max.d, min.k, max.k -- range for the dimension and # clusters.
-## adjust diag, normalize -- variations on the adjacency matrix:
-##   adjust diag puts degree/(n-1) on the diagonal
-##   normalize multiplies by D^{-1/2} on both sides.
-## scale.by.values -- whether to scale the embedded vectors by the
-##   eigen/singular vectors
-## vector -- only used for directed graphs: which of u, v or u|v to 
-##   extract from the singular value decomposition
-## short.circuit -- run Mclust to determine the number of clusters,
-##   then fit the diagonal redundant part. Faster, but does not obtain
-##   the maximum likelihood solution.
-## one.sigma -- not used or tested. The idea was to have all components in
-##   the redundant part have the same variance, but this doesn't seem to
-##   be supported by simulations as a reasonable model.
-## adjustSubset, maxSubset -- used in Mclust. Probably should drop these
-##   and go with the Mclust defaults, since it now works with large data 
-##   sets.
-##   au, av -- like z for directed graphs.
-## ntries -- number of tries of Mclust to search for the best clustering.
-## verbose -- logical for verbosity
 aseCluster <- function(g,z,scale.by.values=FALSE,
                 vector="u",     # only for directed grapohs
                 only.embed=FALSE, # run ase()
@@ -175,6 +128,7 @@ aseCluster <- function(g,z,scale.by.values=FALSE,
                 min.k=1,
                 max.k=12,max.d=max.k,
                 short.circuit=FALSE, # if TRUE run Mclust to determing G
+                #em=FALSE, # use the em code instead of the Mclust approx.
                 maxIts=1000,epsilon=10^(-5),
                 one.sigma=FALSE,   # this hasn't really been tested
                 save.clusterings=TRUE,
@@ -183,7 +137,6 @@ aseCluster <- function(g,z,scale.by.values=FALSE,
                 au,av,    ## only for 'uv' and directed graphs
                 ntries=1, ## number of tries of the Mclust algorithm
                 verbose=FALSE){
-	## The directed graph version has not been extensively tested.
    if(is.directed(g) && tolower(vector)=='uv' && only.embed==FALSE){
        ## Special case for 'uv'. This is not the only way to do this
        ## but it is the way that is currently implemented.
