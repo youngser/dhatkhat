@@ -31,6 +31,7 @@ g <- sbm.game(n, pref.matrix = as.matrix(B),
              block.sizes = rho*n, directed = F, loops = F); summary(g)
 #image(as_adjacency_matrix(g), main="Adjacency Matrix")
 plotA(g)
+ggsave("adjmat.pdf", wdith=5, height=5)
 
 
 ## ----emb-------------------------------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ plotA(g)
 dmax <- 8 # maximum embedding dimension
 ase <- embed.graph(A=g[,,sparse=F], dim=dmax, scaling = TRUE)
 elb <- getElbows(abs(ase$D), n=3, plot=TRUE); title("Scree plot with 3 suggested elbows")
+dev.print(pdf, "scree.pdf")
 
 
 ## ----mc--------------------------------------------------------------------------------------------------------------------
@@ -107,7 +109,6 @@ if (!file.exists("RData/irm_out.RData")) {
   system.time(result_IRM <- irm(g[,,sparse=FALSE], sweeps = 1000)) # ~10 min to run on a macbook
   ari_IRM <- max(sapply(1:nrow(result_IRM), function(x) adjustedRandIndex(Y, result_IRM[x,])))
   khat_IRM <- max(mode.irm(result_IRM))
-#ari_IRM <- khat_IRM <- NA
   dir.create("RData", showWarnings = FALSE)
   save(result_IRM, ari_IRM, khat_IRM, file="RData/irm_out.RData")
 } else {
@@ -135,4 +136,5 @@ df.out %>% ggplot(aes(method, ARI, color=method, fill=method)) +
   theme(axis.text.y=element_text(size=15)) +
   theme(strip.text=element_text(size=rel(1.2))) +
   theme(legend.text = element_text(colour="black", size = 15, face = "plain"))
+ggsave("ari.pdf", width=5, height=5)
 
