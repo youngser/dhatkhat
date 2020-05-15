@@ -12,8 +12,9 @@ Our problem of interest is to cluster vertices of a graph by identifying underly
 
 All the experiments are written in `R`, and here is the instruction for getting the results in the paper. 
 
-* To run a simple working live demo, please run these lines
+### Demo
 
+To run a simple working live demo, please run these lines
 ```
 if (!require(RCurl)) install.packages("RCurl")
 library(RCurl)
@@ -21,20 +22,25 @@ library(RCurl)
 script <- getURL("https://raw.githubusercontent.com/youngser/dhatkhat/master/R/demo.R", ssl.verifypeer = FALSE)
 eval(parse(text = script))
 ```
-
 and the result should look like [this](http://www.cis.jhu.edu/~parky/dhatKhat/demo.html).  
 (This may take around 10 minutes on a typical laptop.)
 
-* To run the synthetic data simulation in the paper, please follow these steps:
+This is exactly the same setting as Figures 8 and 10 in the paper except that the graph is smaller, e.g., $n = 100$ as opposed to $n = 500$ in the paper.
 
-	1. (optional) Run `main_simulation.R` 600 times with different parameter pair `(i, mc)`, where `i` ranges from 1 to 6 and `mc` ranges from 1 to 100. `batch_simulation.sh` is a script for running these jobs in our cluster. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`.
+### Simulations
 
-	2. Run `simulation1.R` to get Figures 1, 2, 3, 5, 6, 7, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html).
+To run the synthetic data simulation in the paper, please follow these steps:
 
-	3. Run `simulation2.R` to get Figures 4, 8, 10, 11 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation2.html).
+1. (optional) Run `main_simulation.R` 600 times with different parameter pair `(i, mc)`, where `i` ranges from 1 to 6 and `mc` ranges from 1 to 100. `batch_simulation.sh` is a script for running these jobs in our cluster. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`.
 
-* To run the connectome data experiment in the paper, please follow these steps:
+2. Run `simulation1.R` to get Figures 1, 2, 3, 5, 6, 7, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html).
 
-	1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are also stored in Google Drive and loaded inside `loadData.R`.
+3. Run `simulation2.R` to get Figures 4, 8, 10, 11 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation2.html).
 
-	2. Run `plot_DS01216.R` to get Figures 12, 13 and the results of Table 1 in the paper.  The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html).
+### Real-data example
+
+To run the connectome data experiment in the paper, please follow these steps:
+
+1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are also stored in Google Drive and loaded inside `loadData.R`.
+
+2. Run `plot_DS01216.R` to get Figures 12, 13 and the results of Table 1 in the paper.  The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html).
