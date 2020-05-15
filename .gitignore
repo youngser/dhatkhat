@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+data/*.rda
+R/RData
+R/RData/*.RData
+*.html
+R/*.html
+
