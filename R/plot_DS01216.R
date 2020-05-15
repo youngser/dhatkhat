@@ -1,6 +1,5 @@
 ############################### REQURIES ###########################
 source("SMS_EM.R")
-source("irm.R")
 
 requiredPkg <- c("igraph", "Matrix", "mclust", "dplyr", "clustvarsel", "MASS", "lattice", "ggplot2", "rvest")
 newPkg <- requiredPkg[!(requiredPkg %in% installed.packages()[, "Package"])]
@@ -141,7 +140,7 @@ for (fIndex in 1 : ngraphs) {
   close(ufile)
 }
 #save.image(file="DS01216.RData")
-print(load("RData/DS01216.RData"))
+load(url("http://www.cis.jhu.edu/~parky/dhatKhat/Results/DS01216.RData"))
 
 # plot figure 12
 df <- data.frame(ari.sms=ari_MCG_Y, ari.sms.r=ari_MCEG_Y,
@@ -153,7 +152,7 @@ df2 <- rbind(data.frame(dhat=dhat_MCG, Khat=khat_MCG, ari=ari_MCG_Y, method="SMS
              data.frame(dhat=dhat_ZG2, Khat=khat_ZG2, ari=ari_ZG2_Y, method="ZG2"),
              data.frame(dhat=dhat_ZG3, Khat=khat_ZG3, ari=ari_ZG3_Y, method="ZG3"))
 #save(df, df2, file="df-drisophila-sms-ZG.RData")
-print(load("RData/df-drisophila-sms-ZG.RData"))
+load(url("http://www.cis.jhu.edu/~parky/dhatKhat/Results/df-drisophila-sms-ZG.RData"))
 
 suppressMessages(library(tidyverse))
 suppressMessages(library(RColorBrewer))
@@ -295,7 +294,7 @@ dev.off()
 #            ZG2_tissue = ari_ZG2_tissue, ZG2_hemisphere = ari_ZG2_hemisphere, ZG2_Y = ari_ZG2_Y, ZG2_region = ari_ZG2_region,
 #            ZG3_tissue = ari_ZG3_tissue, ZG3_hemisphere = ari_ZG3_hemisphere, ZG3_Y = ari_ZG3_Y, ZG3_region = ari_ZG3_region)
 #save(df.all, file="RData/df-all-drosophila.RData")
-print(load("RData/df-all-drosophila.RData"))
+load(url("http://www.cis.jhu.edu/~parky/dhatKhat/Results/df-all-drosophila.RData"))
 
 (win_MCG_IRM_hemisphere <- sum(ari_MCG_hemisphere > df.all$IRM_hemispehre))
 (pvalue_MCG_IRM_hemisphere <- 1 - pbinom(win_MCG_IRM_hemisphere, ngraphs, 0.5))

@@ -37,6 +37,7 @@ files <- paste0(folder_url, dfiles)
 ##############################################
 # plot figure 8
 ##############################################
+
 #files1 <- files %>% filter(grepl(glob2rx("eig_BF1_n500_p0095*"), name))
 files1 <- files[grepl(glob2rx("eig_BF1_n500_p0095*"),dfiles)]
 result <- loadData(files1)
@@ -132,6 +133,7 @@ t.test(as.numeric(df8.b$SMS), as.numeric(df8.b$ZG3), paired=TRUE, alternative = 
 ##############################################
 # plot figure 10
 ##############################################
+
 for (i in 1:6){
   filename = paste("eig_BF1_n500_p0", findex[i], "_mc*", sep="")
 #  filei <- files %>% filter(grepl(glob2rx(filename), name))
@@ -180,6 +182,8 @@ dev.print(pdf, "simulation_all_methods.pdf", width=5, height=4)
 
 ##############################################
 # plot figure 11(a)
+##############################################
+
 op <- par(mar = c(5,5,4,2) + 0.1) ## default is c(5,4,4,2) + 0.1
 
 xrange <- c(0.09,0.115)
@@ -200,6 +204,8 @@ dev.print(pdf, "simulation3_arimean.pdf")
 
 ##############################################
 # plot figure 11(b)
+##############################################
+
 xrange <- c(0.09,0.115)
 yrange <- c(-1.5,4)
 plot(xrange, yrange, type = "n", xlab = "p", ylab = expression(paste("mean(", hat(d), " - ", d, ")")), col.axis = "black")

@@ -73,7 +73,7 @@ figure1 <- function(n = 1000, K = 2){
     df.xx <- as.data.frame(xx[,1:2]); names(df.xx) <- c("x","y")
     df.xx <- cbind(df.xx, block=as.character(c(1:K)))
 
-    ggplot(data=df, aes(x=x, y=y, color=block)) +
+    p <- ggplot(data=df, aes(x=x, y=y, color=block)) +
         geom_point(size=2, alpha=0.5) +
         stat_ellipse(type="norm", size=1, linetype = "dashed", aes(color=block)) +
         geom_point(data=df.xx, aes(x=x,y=y), color="black", size=3) +
@@ -89,8 +89,7 @@ figure1 <- function(n = 1000, K = 2){
         theme(axis.text.y=element_text(size=15)) +
         #  theme(strip.text=element_text(size=rel(1.2))) +
         theme(legend.text = element_text(colour="black", size = 15, face = "plain"))
-
-
+    print(p)
     ggsave(paste0("inf",K,".pdf"), width=5, height=5)
 #    ggsave(paste0("Fig1-n1000-K",K,".pdf"), width=5, height=5)
 }
@@ -857,5 +856,6 @@ figure2()
 figure3()
 figure5()
 figure6(out="exp44_10000_5000.RData")
+tab1Fig7()
 figure9()
 
