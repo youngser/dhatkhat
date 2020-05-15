@@ -53,7 +53,7 @@ Simply download [demo.R](http://www.cis.jhu.edu/~parky/dhatKhat/R/demo.R) and ty
 ```{r pkg}
 ## required packages and sources
 options(repos=structure(c(CRAN="http://cloud.r-project.org/")))
-requiredPkg <- c("tidyverse", "igraph", "Matrix", "mclust")
+requiredPkg <- c("tidyverse", "igraph", "Matrix", "mclust", "irlba")
 newPkg <- requiredPkg[!(requiredPkg %in% installed.packages()[, "Package"])]
 if (length(newPkg)) install.packages(newPkg, dependencies = TRUE)
 update.packages(newPkg, ask = FALSE)

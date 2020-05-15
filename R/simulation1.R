@@ -200,23 +200,23 @@ figure2 <- function(max.d=80)
     m <- par('mar')
     par(mar=c(m[1:2],1,1))
     par(mfrow=c(2,2))
-    boxplot(mus2[[1]][[1]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[1]), cex.lab=1.5)
+    boxplot(mus2[[1]][[1]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[1]), cex.lab=1.5, cex.axis=1.5)
     axis(2)
     axis(1,at=c(3,(1:(max.d/10))*10)-2,label=c(3,(1:(max.d/10))*10))
     title("n=200")
     box()
-    boxplot(mus2[[4]][[1]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[1]), cex.lab=1.5)
+    boxplot(mus2[[4]][[1]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[1]), cex.lab=1.5, cex.axis=1.5)
     axis(2)
     axis(1,at=c(3,(1:(max.d/10))*10)-2,label=c(3,(1:(max.d/10))*10))
     title("n=2000")
     box()
 
-    boxplot(mus2[[1]][[2]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[2]), cex.lab=1.5)
+    boxplot(mus2[[1]][[2]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[2]), cex.lab=1.5, cex.axis=1.5)
     axis(2)
     axis(1,at=c(3,(1:(max.d/10))*10)-2,label=c(3,(1:(max.d/10))*10))
     title("n=200")
     box()
-    boxplot(mus2[[4]][[2]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[2]), cex.lab=1.5)
+    boxplot(mus2[[4]][[2]][,-(1:2)],names=3:max.d,axes=FALSE,xlab='Dimension',ylab=expression(mu[2]), cex.lab=1.5, cex.axis=1.5)
     axis(2)
     axis(1,at=c(3,(1:(max.d/10))*10)-2,label=c(3,(1:(max.d/10))*10))
     title("n=2000")
@@ -258,26 +258,28 @@ figure3 <- function(max.d=80,useS=FALSE)
     ylim <- range(unlist(vars2[[3]]))
     boxplot(vars2[[3]][[1]][,-(1:2)],names=3:max.d,axes=FALSE,
             ylim=ylim,
-            xlab='Dimension',ylab=expression(sigma^2), cex.lab=1.5)
+            xlab='Dimension',ylab=expression(sigma^2), cex.lab=1.5, cex.axis=1.5)
     axis(2)
     axis(1,at=c(3,(1:(max.d/10))*10)-2,label=c(3,(1:(max.d/10))*10))
     title("n=1000")
     box()
-    boxplot(vars2[[3]][[2]][,-(1:2)],add=TRUE,names=3:max.d,axes=FALSE, cex.lab=1.5)
+    boxplot(vars2[[3]][[2]][,-(1:2)],add=TRUE,names=3:max.d,axes=FALSE, cex.lab=1.5, cex.axis=1.5)
 
     ylim <- range(unlist(vars2[[7]]))
     boxplot(vars2[[7]][[1]][,-(1:2)],names=3:max.d,axes=FALSE,
             ylim=ylim,
-            xlab='Dimension',ylab=expression(sigma^2), cex.lab=1.5)
+            xlab='Dimension',ylab=expression(sigma^2), cex.lab=1.5, cex.axis=1.5)
     axis(2)
     axis(1,at=c(3,(1:(max.d/10))*10)-2,label=c(3,(1:(max.d/10))*10))
     title("n=16000")
     box()
-    boxplot(vars2[[7]][[2]][,-(1:2)],add=TRUE,names=3:max.d,axes=FALSE, cex.lab=1.5)
-#    dev.print(device=pdf,file='fig2sigmas16000.pdf') # Fig 3 (a)
+    boxplot(vars2[[7]][[2]][,-(1:2)],add=TRUE,names=3:max.d,axes=FALSE, cex.lab=1.5, cex.axis=1.5)
+    dev.print(device=pdf,file='fig2sigmas16000.pdf') # Fig 3 (a)
     par(mar=m)
 
     par(mfrow=c(1,1))
+    m <- par('mar')
+    par(mar=c(m[1],m[2]+0.5,m[3],m[4]))
     yl <- 1.35
     cols <- 1:length(vars2)
     for(i in 1:length(vars2)){
@@ -286,7 +288,7 @@ figure3 <- function(max.d=80,useS=FALSE)
     }
     plot(3:80,ylim=yl,xlab="Dimension",
          ylab=expression(n*sigma^2),type='n',
-         xlim=c(3,82), cex.lab=1.5)
+         xlim=c(3,82), cex.lab=1.5, cex.axis=1.5)
     for(i in 1:length(vars2)){
         data <- ns[i]*apply(vars2[[i]][[1]][,-(1:2)],2,median)
         lines(3:80,data,lty=1,col=cols[i],lwd=2)
@@ -295,7 +297,8 @@ figure3 <- function(max.d=80,useS=FALSE)
     }
 #    legend(0,yl[2]+.025,legend=paste0("n=",ns),ncol=4,col=cols,lty=1,lwd=1)
 #    legend(70,1.05,legend=c("B1","B2"),lty=1:2,col=1)
-#    dev.print(device=pdf,file='allsigmas.pdf') # Fig 3 (b)
+    dev.print(device=pdf,file='allsigmas.pdf') # Fig 3 (b)
+    par(mar=m)
 }
 
 figure4 <- function(n=200)
@@ -404,18 +407,23 @@ figure5 <- function()
         }))
         k <- k+2
     }
+#    pdf('offcov.pdf') # Fig 5(a)
     m <- par('mar')
-    par(mar=c(m[1],m[1],m[2:3]))
+    par(mar=c(m[1]+0.1, m[1]+0.1, m[2:3]))
     boxplot(data,col=c('white','gray'),xlab="n",ylab=expression(Sigma[ij]),
-            cex.lab=1.5)
+            cex.lab=1.5, cex.axis=1.3)
     abline(h=0,lty=2)
-#    dev.print(device=pdf,file='offcov.pdf') # Fig 5(a)
+#    dev.off()
+    # dev.print(device=pdf,file='offcov.pdf') # Fig 5(a)
     a <- boxplot(data,col=c('white','gray'),outline=FALSE,notch=TRUE)
+#    pdf('offcov2.pdf') # Fig 5(a)
+    par(mar=c(m[1]+0.1, m[1]+0.1, m[2:3]))
     boxplot(data,col=c('white','gray'),outline=FALSE,notch=TRUE,
             ylim=c(min(a$stats[2,]),max(a$stats[4,])),
-            xlab="n",ylab=expression(Sigma[ij]),cex.lab=1.5)
+            xlab="n",ylab=expression(Sigma[ij]),cex.lab=1.5, cex.axis=1.3)
     abline(h=0,lty=2)
-#    dev.print(device=pdf,file='offcov2.pdf') # Fig 5(b)
+#    dev.off()
+    # dev.print(device=pdf,file='offcov2.pdf') # Fig 5(b)
     par(mar=m)
 }
 
@@ -590,6 +598,8 @@ figure6 <- function(N=10000,out,
         load(url(paste0("http://www.cis.jhu.edu/~parky/dhatKhat/Results/",out)))
     }
     with(out,{
+#        pdf("exp44_10000_5000.pdf")
+
         # if(is.null(pictfile))
         #     pictfile <- paste0("figures/exp44_",N,"_",n,".pdf")
         layout(rbind(c(1,1,1,1,2,2,2,2),
@@ -610,7 +620,7 @@ figure6 <- function(N=10000,out,
                         expression(mu[2]^2)),
                 cex.names=1.5,
                 ylab="Mean",
-                xlab="Dimension")
+                xlab="Dimension", cex.lab=1.5, cex.axis=1.5)
         abline(h=0,lty=2)
 
         boxplot(list(c(means1[,-(1:2)]),c(means2[,-(1:2)])),
@@ -620,14 +630,14 @@ figure6 <- function(N=10000,out,
                 names=c(expression(mu[d>3]^1),expression(mu[d>3]^2)),
                 cex.names=1.5,
                 ylab="Mean",
-                xlab="Dimension")
+                xlab="Dimension", cex.lab=1.5, cex.axis=1.5)
         abline(h=0.0,lty=2)
 
         boxplot(list(ondiag1[,1],ondiag2[,1],
                      ondiag1[,2],ondiag2[,2]),
                 notch=TRUE,
                 outline=3 %in% outlines,
-                cex.names=1.5,
+                cex.names=1.5, cex.lab=1.5, cex.axis=1.5,
                 ylab="Informative Variance",
                 main="Variance",
                 names=c(
@@ -642,7 +652,7 @@ figure6 <- function(N=10000,out,
                 notch=TRUE,
                 outline=4 %in% outlines,
                 main="Covariance",
-                cex.names=1.5,
+                cex.names=1.5, cex.lab=1.5, cex.axis=1.5,
                 col=c(rep('white',5),'gray','white','gray'),
                 ylab="Covariance",
                 names=c(
@@ -661,6 +671,7 @@ figure6 <- function(N=10000,out,
         # dev.print(device=pdf,file=pictfile)
         par(mfrow=c(1,1))
         par(mar=margin)
+#        dev.off()
         return(invisible(out))
     })
 }
@@ -806,6 +817,7 @@ tab1Fig7 <- function()
         #        scale_fill_gradientn(colors=gray(255:0/255), limit=c(0,length(unique(df.B23$count)))) +
         xlab(expression(hat("K"))) + ylab(expression(hat("d"))) +
         #        theme(axis.title.x=element_blank(), axis.title.y=element_blank(), panel.background = element_rect(fill = "white", colour = "grey50")) +
+        theme(axis.title=element_text(size=15)) +
         theme(panel.background = element_rect(fill = "white", colour = "grey50")) +
         theme(strip.text.x = element_text(size = 15)) +#, colour = "orange", angle = 90)) +
         theme(strip.text.y = element_text(size = 15)) +#, colour = "orange", angle = 90)) +

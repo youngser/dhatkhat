@@ -185,37 +185,37 @@ ggsave("connectome_dhat_khat.pdf", width=6, height=5)
 # plot Figure 13
 pdf("connectome_ARI_mcg_zg1.pdf")
 hist(ari_MCG_hemisphere - ari_ZG1_hemisphere, xlab = "ARI_SMS - ARI_BIC.ZG1",
-     main="", col = "blue", density = 30);
+     main="", col = "blue", density = 30, cex.lab=1.5, cex.axis=1.5);
 abline(v=0, col=2, lty=2, lwd=5);
 dev.off()
 
 pdf("connectome_ARI_mcg_zg2.pdf")
 hist(ari_MCG_hemisphere - ari_ZG2_hemisphere, xlab = "ARI_SMS - ARI_BIC.ZG2",
-     main="", col = "black", density = 30);
+     main="", col = "black", density = 30, cex.lab=1.5, cex.axis=1.5);
 abline(v=0, col=2, lty=2, lwd=5);
 dev.off()
 
 pdf("connectome_ARI_mcg_zg3.pdf")
 hist(ari_MCG_hemisphere - ari_ZG3_hemisphere, xlab = "ARI_SMS - ARI_BIC.ZG3",
-     main="", col = "purple", density = 30);
+     main="", col = "purple", density = 30, cex.lab=1.5, cex.axis=1.5);
 abline(v=0, col=2, lty=2, lwd=5);
 dev.off()
 
 pdf("connectome_ARI_mceg_zg1.pdf")
 hist(ari_MCEG_hemisphere - ari_ZG1_hemisphere, xlab = "ARI_SMS_Reduced - ARI_BIC.ZG1",
-     main="", col = "blue", angle = 135, density = 10);
+     main="", col = "blue", angle = 135, density = 10, cex.lab=1.5, cex.axis=1.5);
 abline(v=0, col=2, lty=2, lwd=5);
 dev.off()
 
 pdf("connectome_ARI_mceg_zg2.pdf")
 hist(ari_MCEG_hemisphere - ari_ZG2_hemisphere, xlab = "ARI_SMS_Reduced - ARI_BIC.ZG2",
-     main="", col = "black", angle = 135, density = 10);
+     main="", col = "black", angle = 135, density = 10, cex.lab=1.5, cex.axis=1.5);
 abline(v=0, col=2, lty=2, lwd=5);
 dev.off()
 
 pdf("connectome_ARI_mceg_zg3.pdf")
 hist(ari_MCEG_hemisphere - ari_ZG3_hemisphere, xlab = "ARI_SMS_Reduced - ARI_BIC.ZG3",
-     main="", col = "purple", angle = 135, density = 10);
+     main="", col = "purple", angle = 135, density = 10, cex.lab=1.5, cex.axis=1.5);
 abline(v=0, col=2, lty=2, lwd=5);
 dev.off()
 
