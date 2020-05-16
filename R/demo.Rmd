@@ -45,8 +45,18 @@ This is a simple demo written in `R` to compare performances of graph clustering
 Simultaneous Dimensionality and Complexity Model Selection for Spectral Graph Clustering,  
 _Journal of Computational and Graphical Statistics_, in revision, 2020.
 
-Simply download [demo.R](http://www.cis.jhu.edu/~parky/dhatKhat/R/demo.R) and type
-`source("demo.R")` in `R` prompt. Depending on a machine being used, it may take up to 10 minutes to run this demo.
+To run a simple working live demo, please run these lines
+
+```{r run, eval=FALSE}
+if (!require(RCurl)) install.packages("RCurl")
+library(RCurl)
+
+script <- getURL("https://raw.githubusercontent.com/youngser/dhatkhat/master/R/demo.R", ssl.verifypeer = FALSE)
+eval(parse(text = script))
+```
+
+and the result (each plot on its own window) should look like below.   
+__(This may take around 10 minutes on a typical laptop.)__
 
 # Install/Load required packages and utility functions
 
@@ -66,7 +76,7 @@ close(util.file)
 
 # Set parameters
 
-This is exactly the same setting as Figures 8 and 10 in the paper except that the graph is smaller, e.g., $n = 100$ as opposed to $n = 500$ in the paper.
+This is exactly the same setting as Figures 8 and 10 in the paper (with $p = 0.09$) except that the graph is smaller, e.g., $n = 100$ as opposed to $n = 500$ in the paper.
 
 ```{r param}
 ## parameters
@@ -113,7 +123,7 @@ out.SMS <- NULL; out.SMS$bic <- -Inf
 for (d in 1 : (dmax - 1)) {
   for (k in 1 : Kmax) {
     # SMS_Reduced
-    mout.SMS_R <- bicGmmVVV(ase$X[, 1:d, drop=FALSE], k)
+    system.time(mout.SMS_R <- bicGmmVVV(ase$X[, 1:d, drop=FALSE], k))
     if (mout.SMS_R$bic > bic[d]) {
       bic[d] <- mout.SMS_R$bic
       ari[d] <- adjustedRandIndex(Y, mout.SMS_R$classification)
@@ -121,7 +131,7 @@ for (d in 1 : (dmax - 1)) {
     }
 
     # SMS
-    mout.SMS <- bicGmmBlock2(ase$X, d, k)
+    system.time(mout.SMS <- bicGmmBlock2(ase$X, d, k))
     if (mout.SMS$bic > out.SMS$bic) {
       out.SMS <- mout.SMS
     }
