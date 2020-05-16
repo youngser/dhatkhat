@@ -45,7 +45,7 @@ which takes about 7 minute on our local linux server.
 
 To run the connectome data experiment in the paper, please follow these steps:
 
-1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are also stored in Google Drive and loaded inside `loadData.R`. To run this code on a standalone machine, please do this on a command line (on the same directory where all the `.R` files reside) for each `i`-th run, for example
+1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are loaded inside `loadData.R`. To run this code on a standalone machine, please do this on a command line (on the same directory where all the `.R` files reside) for each `i`-th run, for example
 
 ```
 $ R CMD BATCH --no-save --no-restore '--args 1' main_DS01216.R main_DS01216.out &

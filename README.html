@@ -405,7 +405,7 @@ eval(parse(text = script))</code></pre>
 <h3>Real-data example</h3>
 <p>To run the connectome data experiment in the paper, please follow these steps:</p>
 <ol style="list-style-type: decimal">
-<li>(optional) Run <code>main_DS01216.R</code> 114 times with different parameter <code>fileIndex</code>, which ranges from 1 to 114. <code>batch_realdata.sh</code> is a script for running these jobs in our cluster. Each run will produces a <code>.RData</code> file as a partial result (114 files total). The precomputed <code>.RData</code> files are also stored in Google Drive and loaded inside <code>loadData.R</code>. To run this code on a standalone machine, please do this on a command line (on the same directory where all the <code>.R</code> files reside) for each <code>i</code>-th run, for example</li>
+<li>(optional) Run <code>main_DS01216.R</code> 114 times with different parameter <code>fileIndex</code>, which ranges from 1 to 114. <code>batch_realdata.sh</code> is a script for running these jobs in our cluster. Each run will produces a <code>.RData</code> file as a partial result (114 files total). The precomputed <code>.RData</code> files are loaded inside <code>loadData.R</code>. To run this code on a standalone machine, please do this on a command line (on the same directory where all the <code>.R</code> files reside) for each <code>i</code>-th run, for example</li>
 </ol>
 <pre><code>$ R CMD BATCH --no-save --no-restore &#39;--args 1&#39; main_DS01216.R main_DS01216.out &amp;</code></pre>
 <ol start="2" style="list-style-type: decimal">
