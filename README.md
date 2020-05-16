@@ -31,7 +31,11 @@ This is exactly the same setting as Figures 8 and 10 in the paper (with _p = 0.0
 
 To run the synthetic data simulation in the paper, please follow these steps:
 
-1. (optional) Run `main_simulation.R` 600 times with different parameter pair `(i, mc)`, where `i` ranges from 1 to 6 and `mc` ranges from 1 to 100. `batch_simulation.sh` is a script for running these jobs in our cluster. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`.
+1. (optional) Run `main_simulation.R` 600 times with different parameter pair `(i, mc)`, where `i` ranges from 1 to 6 and `mc` ranges from 1 to 100. `batch_simulation.sh` is a script for running these jobs in our cluster. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`. To run this code on a standalone machine, please do this on a command line (on the same directory where all the `.R` files are downloaded) for each `(i, mc)` pair, for example
+```
+$ R CMD BATCH --no-save --no-restore '--args 1 1' main_simulation.R main_simulation.out &
+```
+which takes about 7 minute on our local linux server.
 
 2. Run `simulation1.R` to get Figures 1, 2, 3, 5, 6, 7, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html).
 
@@ -41,6 +45,11 @@ To run the synthetic data simulation in the paper, please follow these steps:
 
 To run the connectome data experiment in the paper, please follow these steps:
 
-1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are also stored in Google Drive and loaded inside `loadData.R`.
+1. (optional) Run `main_DS01216.R` 114 times with different parameter `fileIndex`, which  ranges from 1 to 114. `batch_realdata.sh` is a script for running these jobs in our cluster. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are also stored in Google Drive and loaded inside `loadData.R`. To run this code on a standalone machine, please do this on a command line (on the same directory where all the `.R` files are downloaded) for each `i`-th run, for example
+
+```
+$ R CMD BATCH --no-save --no-restore '--args 1' main_DS01216.R main_DS01216.out &
+```
+
 
 2. Run `plot_DS01216.R` to get Figures 12, 13 and the results of Table 1 in the paper.  The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html).
