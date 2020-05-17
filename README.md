@@ -35,7 +35,7 @@ To run the synthetic data simulation in the paper, please follow these steps:
 ```
 $ R CMD BATCH --no-save --no-restore '--args 1 1' main_simulation.R main_simulation.out &
 ```
-which takes about 7 minute on our local linux server. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`. 
+which takes a several minutes minutes on our local linux server. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`. 
 
 2. Run `simulation1.R` to get Figures 1, 2, 3, 5, 6, 7, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html).
 
@@ -49,6 +49,6 @@ To run the connectome data experiment in the paper, please follow these steps:
 ```
 $ R CMD BATCH --no-save --no-restore '--args 1' main_DS01216.R main_DS01216.out &
 ```
-Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are loaded inside `loadData.R`. 
+which takes several hours on our local linux server. Each run will produces a `.RData` file as a partial result (114 files total). The precomputed `.RData` files are loaded inside `loadData.R`. 
 
 2. Run `plot_DS01216.R` to get Figures 12, 13 and the results of Table 1 in the paper.  The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/plot_DS01216.html).
