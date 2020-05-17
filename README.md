@@ -35,7 +35,7 @@ To run the synthetic data simulation in the paper, please follow these steps:
 ```
 $ R CMD BATCH --no-save --no-restore '--args 1 1' main_simulation.R main_simulation.out &
 ```
-which takes a several minutes minutes on our local linux server. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`. 
+which takes a several minutes on our local linux server. Each run produces a `.RData` file as a partial result (600 files total). The precomputed `.RData` files are loaded inside `loadData.R`. 
 
 2. Run `simulation1.R` to get Figures 1, 2, 3, 5, 6, 7, 9 in the paper. The results are shown in [here](http://www.cis.jhu.edu/~parky/dhatKhat/simulation1.html).
 
