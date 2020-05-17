@@ -378,7 +378,7 @@ summary {
 <p>All the experiments are written in <code>R</code>, and here is the instruction for getting the results in the paper.</p>
 <div id="demo" class="section level3">
 <h3>Demo</h3>
-<p>To run a simple working live demo, please run these lines</p>
+<p>This is exactly the same setting as Figures 8 and 10 in the paper (with <em>p = 0.09</em>) except that the graph is smaller, e.g., <em>n = 100</em> as opposed to <em>n = 500</em> in the paper. To run this simple demo, please run these lines in <code>R</code> prompt:</p>
 <pre><code>if (!require(RCurl)) install.packages(&quot;RCurl&quot;)
 library(RCurl)
 
@@ -386,7 +386,6 @@ script &lt;- getURL(&quot;https://raw.githubusercontent.com/youngser/dhatkhat/ma
 eval(parse(text = script))</code></pre>
 <p>and the result (each plot on its own window) should look like <a href="http://www.cis.jhu.edu/~parky/dhatKhat/demo.html">this</a>.<br />
 (This may take around 10 minutes on a typical laptop.)</p>
-<p>This is exactly the same setting as Figures 8 and 10 in the paper (with <em>p = 0.09</em>) except that the graph is smaller, e.g., <em>n = 100</em> as opposed to <em>n = 500</em> in the paper.</p>
 </div>
 <div id="simulations" class="section level3">
 <h3>Simulations</h3>

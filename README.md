@@ -14,7 +14,7 @@ All the experiments are written in `R`, and here is the instruction for getting 
 
 ### Demo
 
-To run a simple working live demo, please run these lines
+This is exactly the same setting as Figures 8 and 10 in the paper (with _p = 0.09_) except that the graph is smaller, e.g., _n = 100_ as opposed to _n = 500_ in the paper. To run this simple demo, please run these lines in `R` prompt:
 ```
 if (!require(RCurl)) install.packages("RCurl")
 library(RCurl)
@@ -24,8 +24,6 @@ eval(parse(text = script))
 ```
 and the result (each plot on its own window) should look like [this](http://www.cis.jhu.edu/~parky/dhatKhat/demo.html).  
 (This may take around 10 minutes on a typical laptop.)
-
-This is exactly the same setting as Figures 8 and 10 in the paper (with _p = 0.09_) except that the graph is smaller, e.g., _n = 100_ as opposed to _n = 500_ in the paper.
 
 ### Simulations
 
